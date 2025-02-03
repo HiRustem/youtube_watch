@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <title>Youtube Watch</title>
+  </head>
+  <body class="page">
+    <section class="main">
+      <h1 class="heading">
+        <span class="heading__text">mytext mytext mytext</span>
+
+        <span class="heading__text">mytext mytext 1212</span>
+      </h1>
+
+      <div class="video_wrapper">
+        <h2 class="video__heading">my text</h2>
+
+        <div class="video__wrapper">
+          <video
+            id="video"
+            class="video__content"
+            src="/assets/video/sample-5s.mp4"
+            preload="none"
+            poster="/assets/images/video_poster.png"
+          ></video>
+
+          <button id="video__play-button" class="video__play-button flex">
+            <img
+              class="video__play-button__icon"
+              src="/assets/icons/play-circle.svg"
+              alt="play circle"
+            />
+          </button>
+        </div>
+
+        <a class="video__button" href="#">
+          <div class="video__icon-wrapper">
+            <img
+              class="video__icon"
+              src="/assets/icons/youtube.svg"
+              alt="youtube icon"
+            />
+          </div>
+
+          <span class="video__button-text">Watch the video</span>
+        </a>
+      </div>
+    </section>
+
+    <script>
+      window.addEventListener("load", () => {
+        const videoPlayButton = document.querySelector("#video__play-button");
+        const video = document.querySelector("#video");
+
+        const showButton = () => {
+          videoPlayButton.classList.remove("hidden");
+          videoPlayButton.classList.add("flex");
+        };
+
+        const hideButton = () => {
+          videoPlayButton.classList.remove("flex");
+          videoPlayButton.classList.add("hidden");
+        };
+
+        video.addEventListener("playing", () => {
+          hideButton();
+        });
+
+        video.addEventListener("pause", () => {
+          showButton();
+        });
+
+        video.addEventListener("ended", () => {
+          showButton();
+        });
+
+        videoPlayButton.addEventListener("click", (event) => {
+          video.play();
+        });
+      });
+    </script>
+  </body>
+</html>
